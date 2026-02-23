@@ -1,0 +1,17 @@
+{
+  "feeds": [
+    {
+      "name": "velog 트렌딩",
+      "url": "https://api.velog.io/rss",
+      "platform": "velog",
+      "enabled": true
+    },
+    {
+      "name": "44bits",
+      "url": "https://44bits.io/ko/feed",
+      "platform": "blog",
+      "enabled": true
+    }
+  ],
+  "_comment": "tistory 블로그는 https://블로그명.tistory.com/rss 형식으로 추가하세요."
+}
