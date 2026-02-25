@@ -57,11 +57,11 @@ def main():
         },
     ]
 
-    result = db.insert_article_batch(articles)
+    result = db.insert_articles_batch(articles)
     print(f"  저장: {result['inserted']}건, 건너뜀: {result['skipped']}건")
 
     # 중복 저장 테스트
-    result2 = db.insert_article_batch(articles)
+    result2 = db.insert_articles_batch(articles)
     print(f"  중복 재시도: 저장 {result2['inserted']}건, 건너뜀 {result2['skipped']}건")
 
     # 2. 글 조회
