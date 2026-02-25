@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📰 Tech Digest KR</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>📰 Tech Digest KR</h1>
+        <p class="subtitle">한국어 기술 블로그 요약 뉴스레터</p>
+      </div>
+      <div class="header-actions">
+        <button id="btn-run" onclick="runDigest()">🔄 새로고침</button>
+        <button id="btn-settings" onclick="toggleSettings()">⚙️ 설정</button>
+      </div>
+    </header>
+
+    <!-- 통계 바 -->
+    <section id="stats-bar" class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-number" id="stat-total">-</span>
+        <span class="stat-label">전체</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="stat-unread">-</span>
+        <span class="stat-label">안 읽음</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="stat-read">-</span>
+        <span class="stat-label">읽음</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="stat-bookmarked">-</span>
+        <span class="stat-label">북마크</span>
+      </div>
+    </section>
+
+    <!-- 설정 패널 -->
+    <section id="settings-panel" class="settings-panel hidden">
+      <h3>🏷️ 관심 태그 설정</h3>
+      <p class="settings-desc">
+        관심 있는 기술 태그를 쉼표(,)로 구분하여 입력하세요.
+      </p>
+      <textarea
+        id="tags-input"
+        rows="3"
+        placeholder="python, fastapi, ai, backend"
+      ></textarea>
+      <div class="settings-actions">
+        <button onclick="saveTags()">💾 저장</button>
+        <button class="btn-secondary" onclick="toggleSettings()">닫기</button>
+      </div>
+    </section>
+
+    <!-- 필터 탭 -->
+    <nav class="filter-tabs">
+      <button class="tab active" data-filter="all" onclick="setFilter('all')">
+        📋 전체
+      </button>
+      <button class="tab" data-filter="unread" onclick="setFilter('unread')">
+        🆕 안 읽음
+      </button>
+      <button
+        class="tab"
+        data-filter="bookmarked"
+        onclick="setFilter('bookmarked')"
+      >
+        ⭐ 북마크
+      </button>
+      <button class="tab" data-filter="digest" onclick="setFilter('digest')">
+        📰 다이제스트
+      </button>
+    </nav>
+
+    <!-- 파이프라인 상태 -->
+    <div id="pipeline-status" class="pipeline-status hidden">
+      <div class="spinner"></div>
+      <span>파이프라인 실행 중... RSS 수집 → 요약 → 분류 진행 중</span>
+    </div>
+
+    <!-- 글 목록 -->
+    <main id="article-list" class="article-list">
+      <div class="loading">로딩 중...</div>
+    </main>
+
+    <!-- 다이제스트 뷰 -->
+    <main id="digest-view" class="article-list hidden"></main>
+
+    <footer>
+      <p>Tech Digest KR v0.1.0 | 매일 아침 기술 뉴스를 3줄로 📬</p>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 from pathlib import Path
 
 from src.api.routes import articles, digest, settings
@@ -45,6 +46,13 @@ def root():
             "stats": "/api/settings/stats",
         },
     }
+
+
+@app.get("/app", response_class=HTMLResponse)
+def serve_app():
+    """뉴스레터 UI 서빙"""
+    html_path = Path(__file__).parent / "templates" / "index.html"
+    return HTMLResponse(content=html_path.read_text(encoding="utf-8"))
 
 
 @app.get("/health")

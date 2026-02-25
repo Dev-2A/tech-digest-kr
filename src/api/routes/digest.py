@@ -55,6 +55,6 @@ def get_status():
 @router.get("/latest")
 def get_latest_digest():
     """최신 다이제스트 결과 조회"""
-    if _pipeline_status["last_reulst"] is None:
+    if _pipeline_status["last_result"] is None:
         return {"message": "아직 실행된 다이제스트가 없습니다.", "digest": []}
     return _pipeline_status["last_result"]
